@@ -1,0 +1,28 @@
+server:
+  port: 8585
+  servlet:
+    context-path: OrderManagement
+
+spring:
+  datasource:
+    url: jdbc:postgresql://34.78.64.89:5432/postgres
+    username: postgres
+    password: Do$_YRtOv]{z<5L>
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+  security:
+    user:
+      name: admin
+      password: admin123
+      roles: ADMIN
+  application:
+    name: Order Management
+
