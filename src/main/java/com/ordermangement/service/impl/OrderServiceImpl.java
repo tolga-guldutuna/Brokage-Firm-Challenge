@@ -1,5 +1,7 @@
 package com.ordermangement.service.impl;
 
+import com.ordermangement.util.mapper.OrderMapper;  // Doğru import
+import com.ordermangement.model.dto.BaseResponse;
 import com.ordermangement.model.dto.CreateOrderRequest;
 import com.ordermangement.model.dto.OrderDTO;
 import com.ordermangement.model.entity.Asset;
@@ -25,56 +27,93 @@ public class OrderServiceImpl implements OrderService {
     private AssetRepository assetRepository;
 
     @Override
-    public void createOrder(CreateOrderRequest request) {
-        Asset asset = assetRepository.findByCustomerUidAndAssetName(request.getCustomerUid(), "TRY").stream().findFirst().orElse(null);
-        if (asset == null || asset.getUsableSize().compareTo(request.getPrice().multiply(request.getSize())) < 0) {
-            throw new RuntimeException("Insufficient funds");
-        } else {
-            asset.setUsableSize(asset.getUsableSize().subtract(request.getPrice().multiply(request.getSize())));
-            assetRepository.save(asset);
+    public BaseResponse<OrderDTO> createOrder(CreateOrderRequest request) throws Exception {
+        List<Asset> tryAssets = assetRepository.findByCustomerUidAndAssetName(request.getCustomerUid(), "TRY");
 
-            Order order = new Order();
-            order.setCustomerUid(request.getCustomerUid());
-            order.setAssetName(request.getAssetName());
-            order.setOrderSide(request.getOrderSide());
-            order.setSize(request.getSize());
-            order.setPrice(request.getPrice());
-            order.setStatus(OrderStatus.PENDING);
-            orderRepository.save(order);
+        // TRY varlığının olup olmadığını kontrol ediyoruz
+        if (tryAssets.isEmpty()) {
+            return new BaseResponse<>(false, "TRY asset not found for the customer.", null);
         }
+
+        Asset tryAsset = tryAssets.get(0);
+
+        // TRY bakiyesi kontrolü
+        if (tryAsset.getUsableSize().compareTo(request.getPrice().multiply(request.getSize())) < 0) {
+            return new BaseResponse<>(false, "Insufficient TRY balance.", null);
+        }
+
+        // DTO'yu doğrudan doldurmak yerine, OrderMapper kullanılacak
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setCustomerUid(request.getCustomerUid());
+        orderDTO.setAssetName(request.getAssetName());
+        orderDTO.setOrderSide(request.getOrderSide());
+        orderDTO.setSize(request.getSize());
+        orderDTO.setPrice(request.getPrice());
+        orderDTO.setStatus(OrderStatus.PENDING);
+        orderDTO.setCreateDate(LocalDateTime.now());
+
+        // DTO'dan entity'ye dönüştürme
+        Order order = OrderMapper.toEntity(orderDTO);
+
+        // TRY bakiyesi güncellenir
+        assetRepository.updateUsableSizeNative(tryAsset.getUid(), tryAsset.getUsableSize().subtract(request.getPrice().multiply(request.getSize())));
+
+        orderRepository.save(order);
+        return new BaseResponse<>(true, "Order created successfully.", OrderMapper.toDTO(order));
     }
 
     @Override
-    public List<OrderDTO> listOrders(String customerUid, LocalDateTime startDate, LocalDateTime endDate) {
-        List<Order> orders = orderRepository.findByCustomerUidAndCreateDateBetween(customerUid, startDate, endDate);
-        return orders.stream().map(order -> {
-            OrderDTO dto = new OrderDTO();
-            dto.setUid(order.getUid());
-            dto.setCustomerUid(order.getCustomerUid());
-            dto.setAssetName(order.getAssetName());
-            dto.setOrderSide(order.getOrderSide());
-            dto.setSize(order.getSize());
-            dto.setPrice(order.getPrice());
-            dto.setStatus(order.getStatus());
-            dto.setCreateDate(order.getCreateDate());
-            return dto;
-        }).collect(Collectors.toList());
+    public BaseResponse<List<OrderDTO>> listOrdersByCustomerUid(String customerUid, LocalDateTime startDate, LocalDateTime endDate) {
+        List<OrderDTO> orders = orderRepository.findByCustomerUidAndCreateDateBetween(customerUid, startDate, endDate)
+                .stream()
+                .map(OrderMapper::toDTO)
+                .collect(Collectors.toList());
+
+        return new BaseResponse<>(true, "Orders retrieved successfully.", orders);
     }
 
     @Override
-    public void cancelOrder(String orderUid) {
+    public BaseResponse<List<OrderDTO>> listOrdersByCustomerUidAndStatus(String customerUid, OrderStatus status) {
+        List<OrderDTO> orders = orderRepository.findByCustomerUidAndStatus(customerUid, status)
+                .stream()
+                .map(OrderMapper::toDTO)
+                .collect(Collectors.toList());
+
+        return new BaseResponse<>(true, "Orders retrieved successfully.", orders);
+    }
+
+    @Override
+    public BaseResponse<Void> cancelOrder(String orderUid) throws Exception {
         Order order = orderRepository.findByUid(orderUid);
-        if (order == null || order.getStatus() != OrderStatus.PENDING) {
-            throw new RuntimeException("Order cannot be canceled");
-        } else {
-            order.setStatus(OrderStatus.CANCELED);
-            orderRepository.save(order);
-
-            Asset asset = assetRepository.findByCustomerUidAndAssetName(order.getCustomerUid(), "TRY").stream().findFirst().orElse(null);
-            if (asset != null) {
-                asset.setUsableSize(asset.getUsableSize().add(order.getPrice().multiply(order.getSize())));
-                assetRepository.save(asset);
-            }
+        if (order.getStatus() != OrderStatus.PENDING) {
+            return new BaseResponse<>(false, "Only pending orders can be cancelled.", null);
         }
+
+        orderRepository.cancelPendingOrderNative(orderUid);
+
+        Asset tryAsset = assetRepository.findByCustomerUidAndAssetName(order.getCustomerUid(), "TRY").get(0);
+        assetRepository.updateUsableSizeNative(tryAsset.getUid(), tryAsset.getUsableSize().add(order.getPrice().multiply(order.getSize())));
+
+        return new BaseResponse<>(true, "Order cancelled successfully.", null);
+    }
+
+    @Override
+    public BaseResponse<Void> matchOrder(String orderUid) throws Exception {
+        Order order = orderRepository.findByUid(orderUid);
+        if (order.getStatus() != OrderStatus.PENDING) {
+            return new BaseResponse<>(false, "Only pending orders can be matched.", null);
+        }
+
+        Asset asset = assetRepository.findByCustomerUidAndAssetName(order.getCustomerUid(), order.getAssetName()).get(0);
+        if (asset == null) {
+            return new BaseResponse<>(false, "Asset not found.", null);
+        }
+
+        assetRepository.updateUsableSizeNative(asset.getUid(), asset.getUsableSize().add(order.getSize()));
+
+        order.setStatus(OrderStatus.MATCHED);
+        orderRepository.save(order);
+
+        return new BaseResponse<>(true, "Order matched successfully.", null);
     }
 }

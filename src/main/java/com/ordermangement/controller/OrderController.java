@@ -1,14 +1,15 @@
 package com.ordermangement.controller;
 
 import com.ordermangement.model.dto.BaseResponse;
+import com.ordermangement.model.dto.OrderUidRequest;
 import com.ordermangement.model.dto.CreateOrderRequest;
+import com.ordermangement.model.dto.ListOrdersRequest;
 import com.ordermangement.model.dto.OrderDTO;
 import com.ordermangement.service.OrderService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -18,26 +19,27 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping
-    public ResponseEntity<BaseResponse<Void>> createOrder(@RequestBody CreateOrderRequest request) {
-        orderService.createOrder(request);
-        BaseResponse<Void> response = new BaseResponse<>(true, "Order created successfully", null);
-        return ResponseEntity.ok(response);
+    @Operation(summary = "Create a new order for a customer")
+    @PostMapping("/create")
+    public BaseResponse<OrderDTO> createOrder(@RequestBody CreateOrderRequest request) throws Exception {
+        return orderService.createOrder(request);
     }
 
-    @GetMapping
-    public ResponseEntity<BaseResponse<List<OrderDTO>>> listOrders(@RequestParam String customerUid,
-                                                                   @RequestParam(required = false) LocalDateTime startDate,
-                                                                   @RequestParam(required = false) LocalDateTime endDate) {
-        List<OrderDTO> orders = orderService.listOrders(customerUid, startDate, endDate);
-        BaseResponse<List<OrderDTO>> response = new BaseResponse<>(true, "Orders retrieved successfully", orders);
-        return ResponseEntity.ok(response);
+    @Operation(summary = "List orders for a customer by date range")
+    @PostMapping("/list")
+    public BaseResponse<List<OrderDTO>> listOrdersByCustomerUid(@RequestBody ListOrdersRequest request) {
+        return orderService.listOrdersByCustomerUid(request.getCustomerUid(), request.getStartDate(), request.getEndDate());
     }
 
-    @DeleteMapping("/{orderUid}")
-    public ResponseEntity<BaseResponse<Void>> cancelOrder(@PathVariable String orderUid) {
-        orderService.cancelOrder(orderUid);
-        BaseResponse<Void> response = new BaseResponse<>(true, "Order canceled successfully", null);
-        return ResponseEntity.ok(response);
+    @Operation(summary = "Cancel a pending order")
+    @PostMapping("/cancel")
+    public BaseResponse<Void> cancelOrder(@RequestBody OrderUidRequest request) throws Exception {
+        return orderService.cancelOrder(request.getOrderUid());
+    }
+
+    @Operation(summary = "Match a pending order (Admin Only)")
+    @PostMapping("/match")
+    public BaseResponse<Void> matchOrder(@RequestBody OrderUidRequest request) throws Exception {
+        return orderService.matchOrder(request.getOrderUid());
     }
 }

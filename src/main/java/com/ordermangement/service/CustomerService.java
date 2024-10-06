@@ -1,13 +1,15 @@
 package com.ordermangement.service;
 
+import com.ordermangement.model.dto.BaseResponse;
 import com.ordermangement.model.dto.CustomerDTO;
 
-import java.math.BigDecimal;
-
 public interface CustomerService {
-    CustomerDTO getCustomerByUid(String uid);
 
-    void depositMoney(String customerUid, BigDecimal amount);
+    BaseResponse<CustomerDTO> getCustomerByUid(String customerUid);
 
-    void withdrawMoney(String customerUid, BigDecimal amount, String iban);
+    BaseResponse<CustomerDTO> getCustomerByEmail(String email);
+
+    BaseResponse<Void> depositMoney(String customerUid, double amount) throws Exception;
+
+    BaseResponse<Void> withdrawMoney(String customerUid, double amount, String iban) throws Exception;
 }

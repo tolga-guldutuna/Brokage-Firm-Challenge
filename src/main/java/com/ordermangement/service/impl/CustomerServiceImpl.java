@@ -1,5 +1,7 @@
 package com.ordermangement.service.impl;
 
+import com.ordermangement.util.mapper.CustomerMapper;
+import com.ordermangement.model.dto.BaseResponse;
 import com.ordermangement.model.dto.CustomerDTO;
 import com.ordermangement.model.entity.Asset;
 import com.ordermangement.model.entity.Customer;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -21,44 +24,49 @@ public class CustomerServiceImpl implements CustomerService {
     private AssetRepository assetRepository;
 
     @Override
-    public CustomerDTO getCustomerByUid(String uid) {
-        Customer customer = customerRepository.findByUid(uid);
+    public BaseResponse<CustomerDTO> getCustomerByUid(String customerUid) {
+        Customer customer = customerRepository.findByUid(customerUid);
         if (customer == null) {
-            throw new RuntimeException("Customer not found");
+            return new BaseResponse<>(false, "Customer not found.", null);
         }
-        CustomerDTO dto = new CustomerDTO();
-        dto.setUid(String.valueOf(customer.getUid()));
-        dto.setName(customer.getName());
-        dto.setEmail(customer.getEmail());
-        return dto;
+        return new BaseResponse<>(true, "Customer retrieved successfully.", CustomerMapper.toDTO(customer));
     }
 
     @Override
-    public void depositMoney(String customerUid, BigDecimal amount) {
-        Asset asset = assetRepository.findByCustomerUidAndAssetName(customerUid, "TRY").stream().findFirst().orElse(null);
-        if (asset == null) {
-            asset = new Asset();
-            asset.setCustomerUid(customerUid);
-            asset.setAssetName("TRY");
-            asset.setSize(amount);
-            asset.setUsableSize(amount);
-            assetRepository.save(asset);
-        } else {
-            asset.setSize(asset.getSize().add(amount));
-            asset.setUsableSize(asset.getUsableSize().add(amount));
-            assetRepository.save(asset);
+    public BaseResponse<CustomerDTO> getCustomerByEmail(String email) {
+        Customer customer = customerRepository.findByEmail(email);
+        if (customer == null) {
+            return new BaseResponse<>(false, "Customer not found by email.", null);
         }
+        return new BaseResponse<>(true, "Customer retrieved successfully.", CustomerMapper.toDTO(customer));
     }
 
     @Override
-    public void withdrawMoney(String customerUid, BigDecimal amount, String iban) {
-        Asset asset = assetRepository.findByCustomerUidAndAssetName(customerUid, "TRY").stream().findFirst().orElse(null);
-        if (asset == null || asset.getUsableSize().compareTo(amount) < 0) {
-            throw new RuntimeException("Insufficient funds");
-        } else {
-            asset.setSize(asset.getSize().subtract(amount));
-            asset.setUsableSize(asset.getUsableSize().subtract(amount));
-            assetRepository.save(asset);
+    public BaseResponse<Void> depositMoney(String customerUid, double amount) throws Exception {
+        List<Asset> tryAssets = assetRepository.findByCustomerUidAndAssetName(customerUid, "TRY");
+        if (tryAssets.isEmpty()) {
+            return new BaseResponse<>(false, "TRY asset not found for customer.", null);
         }
+
+        Asset tryAsset = tryAssets.get(0);
+        assetRepository.updateUsableSizeNative(tryAsset.getUid(), tryAsset.getUsableSize().add(BigDecimal.valueOf(amount)));
+        return new BaseResponse<>(true, "Money deposited successfully.", null);
+    }
+
+    @Override
+    public BaseResponse<Void> withdrawMoney(String customerUid, double amount, String iban) throws Exception {
+        List<Asset> tryAssets = assetRepository.findByCustomerUidAndAssetName(customerUid, "TRY");
+        if (tryAssets.isEmpty()) {
+            return new BaseResponse<>(false, "TRY asset not found for customer.", null);
+        }
+
+        Asset tryAsset = tryAssets.get(0);
+
+        if (tryAsset.getUsableSize().compareTo(BigDecimal.valueOf(amount)) < 0) {
+            return new BaseResponse<>(false, "Insufficient TRY balance.", null);
+        }
+
+        assetRepository.updateUsableSizeNative(tryAsset.getUid(), tryAsset.getUsableSize().subtract(BigDecimal.valueOf(amount)));
+        return new BaseResponse<>(true, "Money withdrawn successfully.", null);
     }
 }

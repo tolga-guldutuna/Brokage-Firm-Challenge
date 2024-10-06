@@ -2,12 +2,12 @@ package com.ordermangement.controller;
 
 import com.ordermangement.model.dto.BaseResponse;
 import com.ordermangement.model.dto.CustomerDTO;
+import com.ordermangement.model.dto.DepositMoneyRequest;
+import com.ordermangement.model.dto.WithdrawMoneyRequest;
 import com.ordermangement.service.CustomerService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/customers")
@@ -16,24 +16,27 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @GetMapping("/{uid}")
-    public ResponseEntity<BaseResponse<CustomerDTO>> getCustomer(@PathVariable String uid) {
-        CustomerDTO customer = customerService.getCustomerByUid(uid);
-        BaseResponse<CustomerDTO> response = new BaseResponse<>(true, "Customer retrieved successfully", customer);
-        return ResponseEntity.ok(response);
+    @Operation(summary = "Get customer by UID")
+    @PostMapping("/get-by-uid")
+    public BaseResponse<CustomerDTO> getCustomerByUid(@RequestBody String customerUid) {
+        return customerService.getCustomerByUid(customerUid);
     }
 
-    @PostMapping("/{uid}/deposit")
-    public ResponseEntity<BaseResponse<Void>> depositMoney(@PathVariable String uid, @RequestParam BigDecimal amount) {
-        customerService.depositMoney(uid, amount);
-        BaseResponse<Void> response = new BaseResponse<>(true, "Deposit successful", null);
-        return ResponseEntity.ok(response);
+    @Operation(summary = "Get customer by email")
+    @PostMapping("/get-by-email")
+    public BaseResponse<CustomerDTO> getCustomerByEmail(@RequestBody String email) {
+        return customerService.getCustomerByEmail(email);
     }
 
-    @PostMapping("/{uid}/withdraw")
-    public ResponseEntity<BaseResponse<Void>> withdrawMoney(@PathVariable String uid, @RequestParam BigDecimal amount, @RequestParam String iban) {
-        customerService.withdrawMoney(uid, amount, iban);
-        BaseResponse<Void> response = new BaseResponse<>(true, "Withdrawal successful", null);
-        return ResponseEntity.ok(response);
+    @Operation(summary = "Deposit money for a customer")
+    @PostMapping("/deposit")
+    public BaseResponse<Void> depositMoney(@RequestBody DepositMoneyRequest request) throws Exception {
+        return customerService.depositMoney(request.getCustomerUid(), request.getAmount());
+    }
+
+    @Operation(summary = "Withdraw money for a customer")
+    @PostMapping("/withdraw")
+    public BaseResponse<Void> withdrawMoney(@RequestBody WithdrawMoneyRequest request) throws Exception {
+        return customerService.withdrawMoney(request.getCustomerUid(), request.getAmount(), request.getIban());
     }
 }
