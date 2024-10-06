@@ -38,11 +38,4 @@ public class Asset {
             uid = UUID.randomUUID().toString();
         }
     }
-
-    // İlişkiyi sağlamak için Customer entity'si ile bağlantı (opsiyonel)
-    /*
-    @ManyToOne
-    @JoinColumn(name = "customer_uid", referencedColumnName = "uid", insertable = false, updatable = false)
-    private Customer customer;
-    */
 }

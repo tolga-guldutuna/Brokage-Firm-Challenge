@@ -17,7 +17,7 @@ public class Customer {
     private Long id;
 
     @Column(name = "uid", unique = true, nullable = false, updatable = false)
-    private UUID uid;
+    private String uid;
 
     @Column(name = "name")
     private String name;
@@ -31,7 +31,7 @@ public class Customer {
     @PrePersist
     public void prePersist() {
         if (uid == null) {
-            uid = UUID.randomUUID();
+            uid = UUID.randomUUID().toString();
         }
     }
 }
