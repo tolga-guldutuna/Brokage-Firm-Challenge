@@ -1,13 +1,13 @@
-package com.smarthub.ing;
+package com.ordermangement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BrokageFirmChallengeApplication {
+public class OrderApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BrokageFirmChallengeApplication.class, args);
+		SpringApplication.run(OrderApplication.class, args);
 	}
 
 }

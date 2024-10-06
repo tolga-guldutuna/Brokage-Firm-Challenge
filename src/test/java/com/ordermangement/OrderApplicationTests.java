@@ -1,10 +1,10 @@
-package com.smarthub.ing;
+package com.ordermangement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BrokageFirmChallengeApplicationTests {
+class OrderApplicationTests {
 
 	@Test
 	void contextLoads() {
