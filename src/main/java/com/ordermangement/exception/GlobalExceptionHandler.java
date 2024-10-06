@@ -1,6 +1,6 @@
 package com.ordermangement.exception;
 
-import com.ordermangement.dto.BaseResponse;
+import com.ordermangement.model.dto.BaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

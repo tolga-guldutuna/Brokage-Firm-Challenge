@@ -1,7 +1,7 @@
 package com.ordermangement.controller;
 
-import com.ordermangement.dto.BaseResponse;
-import com.ordermangement.dto.AssetDTO;
+import com.ordermangement.model.dto.BaseResponse;
+import com.ordermangement.model.dto.AssetDTO;
 import com.ordermangement.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

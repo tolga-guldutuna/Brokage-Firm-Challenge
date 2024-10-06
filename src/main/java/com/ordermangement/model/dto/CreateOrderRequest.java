@@ -1,6 +1,6 @@
-package com.ordermangement.dto;
+package com.ordermangement.model.dto;
 
-import com.ordermangement.enums.OrderSide;
+import com.ordermangement.model.enums.OrderSide;
 import lombok.Data;
 
 import java.math.BigDecimal;

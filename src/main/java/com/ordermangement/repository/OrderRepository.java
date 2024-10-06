@@ -1,7 +1,7 @@
 package com.ordermangement.repository;
 
-import com.ordermangement.entity.Order;
-import com.ordermangement.enums.OrderStatus;
+import com.ordermangement.model.entity.Order;
+import com.ordermangement.model.enums.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;

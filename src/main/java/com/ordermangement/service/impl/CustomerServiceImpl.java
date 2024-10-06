@@ -1,8 +1,8 @@
 package com.ordermangement.service.impl;
 
-import com.ordermangement.dto.CustomerDTO;
-import com.ordermangement.entity.Asset;
-import com.ordermangement.entity.Customer;
+import com.ordermangement.model.dto.CustomerDTO;
+import com.ordermangement.model.entity.Asset;
+import com.ordermangement.model.entity.Customer;
 import com.ordermangement.repository.AssetRepository;
 import com.ordermangement.repository.CustomerRepository;
 import com.ordermangement.service.CustomerService;

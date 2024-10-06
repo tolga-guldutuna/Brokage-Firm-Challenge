@@ -1,10 +1,10 @@
 package com.ordermangement.service.impl;
 
-import com.ordermangement.dto.CreateOrderRequest;
-import com.ordermangement.dto.OrderDTO;
-import com.ordermangement.entity.Asset;
-import com.ordermangement.entity.Order;
-import com.ordermangement.enums.OrderStatus;
+import com.ordermangement.model.dto.CreateOrderRequest;
+import com.ordermangement.model.dto.OrderDTO;
+import com.ordermangement.model.entity.Asset;
+import com.ordermangement.model.entity.Order;
+import com.ordermangement.model.enums.OrderStatus;
 import com.ordermangement.repository.AssetRepository;
 import com.ordermangement.repository.OrderRepository;
 import com.ordermangement.service.OrderService;

@@ -1,6 +1,6 @@
 package com.ordermangement.service;
 
-import com.ordermangement.dto.CustomerDTO;
+import com.ordermangement.model.dto.CustomerDTO;
 
 import java.math.BigDecimal;
 

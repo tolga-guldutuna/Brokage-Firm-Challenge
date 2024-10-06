@@ -1,6 +1,6 @@
 package com.ordermangement.repository;
 
-import com.ordermangement.entity.Asset;
+import com.ordermangement.model.entity.Asset;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

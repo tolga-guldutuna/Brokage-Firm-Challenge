@@ -1,8 +1,8 @@
 package com.ordermangement.controller;
 
-import com.ordermangement.dto.BaseResponse;
-import com.ordermangement.dto.CreateOrderRequest;
-import com.ordermangement.dto.OrderDTO;
+import com.ordermangement.model.dto.BaseResponse;
+import com.ordermangement.model.dto.CreateOrderRequest;
+import com.ordermangement.model.dto.OrderDTO;
 import com.ordermangement.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

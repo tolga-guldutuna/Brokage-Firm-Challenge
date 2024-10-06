@@ -1,4 +1,4 @@
-package com.ordermangement.enums;
+package com.ordermangement.model.enums;
 
 public enum OrderStatus {
     PENDING,

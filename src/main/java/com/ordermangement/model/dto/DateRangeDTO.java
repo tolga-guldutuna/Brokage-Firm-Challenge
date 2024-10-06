@@ -1,4 +1,4 @@
-package com.ordermangement.dto;
+package com.ordermangement.model.dto;
 
 import lombok.Data;
 

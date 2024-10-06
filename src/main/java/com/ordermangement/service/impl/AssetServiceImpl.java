@@ -1,7 +1,7 @@
 package com.ordermangement.service.impl;
 
-import com.ordermangement.dto.AssetDTO;
-import com.ordermangement.entity.Asset;
+import com.ordermangement.model.dto.AssetDTO;
+import com.ordermangement.model.entity.Asset;
 import com.ordermangement.repository.AssetRepository;
 import com.ordermangement.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;

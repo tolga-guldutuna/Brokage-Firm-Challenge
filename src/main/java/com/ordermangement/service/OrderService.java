@@ -1,7 +1,7 @@
 package com.ordermangement.service;
 
-import com.ordermangement.dto.CreateOrderRequest;
-import com.ordermangement.dto.OrderDTO;
+import com.ordermangement.model.dto.CreateOrderRequest;
+import com.ordermangement.model.dto.OrderDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;

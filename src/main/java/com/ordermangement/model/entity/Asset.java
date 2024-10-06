@@ -1,10 +1,11 @@
-package com.ordermangement.entity;
+package com.ordermangement.model.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Entity
 @Table(name = "assets")
@@ -17,10 +18,10 @@ public class Asset {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "uid", unique = true, nullable = false, updatable = false, length = 36)
+    @Column(name = "uid", unique = true, nullable = false, length = 36)
     private String uid;
 
-    @Column(name = "customer_uid")
+    @Column(name = "customer_uid", nullable = false)
     private String customerUid;
 
     @Column(name = "asset_name")
@@ -31,11 +32,4 @@ public class Asset {
 
     @Column(name = "usable_size")
     private BigDecimal usableSize;
-
-    @PrePersist
-    public void prePersist() {
-        if (uid == null) {
-            uid = UUID.randomUUID().toString();
-        }
-    }
 }

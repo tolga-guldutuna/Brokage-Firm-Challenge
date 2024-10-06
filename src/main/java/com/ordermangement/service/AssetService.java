@@ -1,6 +1,6 @@
 package com.ordermangement.service;
 
-import com.ordermangement.dto.AssetDTO;
+import com.ordermangement.model.dto.AssetDTO;
 
 import java.util.List;
 

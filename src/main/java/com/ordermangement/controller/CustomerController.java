@@ -1,7 +1,7 @@
 package com.ordermangement.controller;
 
-import com.ordermangement.dto.BaseResponse;
-import com.ordermangement.dto.CustomerDTO;
+import com.ordermangement.model.dto.BaseResponse;
+import com.ordermangement.model.dto.CustomerDTO;
 import com.ordermangement.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -12,11 +12,28 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Brokage Firm Challenge"));
+                .info(new Info().title("Brokage Firm Challenge API")
+                        .version("1.0")
+                        .description("API documentation for the Brokage Firm Challenge"));
     }
 
     @Bean
     GroupedOpenApi all() {
         return GroupedOpenApi.builder().group("all").pathsToMatch("/**/**").build();
+    }
+
+    @Bean
+    GroupedOpenApi orders() {
+        return GroupedOpenApi.builder().group("orders").pathsToMatch("/orders/**").build();
+    }
+
+    @Bean
+    GroupedOpenApi customers() {
+        return GroupedOpenApi.builder().group("customers").pathsToMatch("/customers/**").build();
+    }
+
+    @Bean
+    GroupedOpenApi assets() {
+        return GroupedOpenApi.builder().group("assets").pathsToMatch("/assets/**").build();
     }
 }

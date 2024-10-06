@@ -1,9 +1,9 @@
-package com.ordermangement.entity;
+package com.ordermangement.model.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.UUID;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "customers")
@@ -16,7 +16,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "uid", unique = true, nullable = false, updatable = false)
+    @Column(name = "uid", unique = true, nullable = false, length = 36)
     private String uid;
 
     @Column(name = "name")
@@ -27,11 +27,4 @@ public class Customer {
 
     @Column(name = "password")
     private String password;
-
-    @PrePersist
-    public void prePersist() {
-        if (uid == null) {
-            uid = UUID.randomUUID().toString();
-        }
-    }
 }

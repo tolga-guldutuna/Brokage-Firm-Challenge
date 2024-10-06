@@ -1,7 +1,7 @@
-package com.ordermangement.dto;
+package com.ordermangement.model.dto;
 
-import com.ordermangement.enums.OrderSide;
-import com.ordermangement.enums.OrderStatus;
+import com.ordermangement.model.enums.OrderSide;
+import com.ordermangement.model.enums.OrderStatus;
 import lombok.Data;
 
 import java.math.BigDecimal;
