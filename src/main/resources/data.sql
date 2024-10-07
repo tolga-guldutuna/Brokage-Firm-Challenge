@@ -1,6 +1,6 @@
 -- Admin kullanıcı ekleme
-INSERT INTO customers (uid, name, email, password) VALUES
-    ('11111111-1111-1111-1111-111111111111', 'Admin User', 'admin@domain.com', '$2a$10$DCgXaPzFfrsQbe.PiBbQfue2CtDUpQzYQkGp5mdLf8CrpFcZQGm1m'); -- admin şifresi: 'adminpassword'
+INSERT INTO employees (uid, name, email, password)
+VALUES ('11111111-1111-1111-1111-111111111111', 'Admin User', 'admin@domain.com', '$2a$10$DCgXaPzFfrsQbe.PiBbQfue2CtDUpQzYQkGp5mdLf8CrpFcZQGm1m');
 
 -- Müşteriler ekleme
 INSERT INTO customers (uid, name, email, password) VALUES

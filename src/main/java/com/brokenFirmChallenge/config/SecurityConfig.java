@@ -37,7 +37,7 @@ public class SecurityConfig {
                         .requestMatchers("/customers/**","/orders/**").hasRole("CUSTOMER")
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form.defaultSuccessUrl("/home", true))
+                .formLogin(form -> form.defaultSuccessUrl("http://localhost:8585/Brokage-Firm-Challenge/swagger-ui/index.html", true))
                 .httpBasic(withDefaults());
         return http.build();
     }

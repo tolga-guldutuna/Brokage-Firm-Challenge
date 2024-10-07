@@ -69,12 +69,12 @@ This project is a backend API developed for a brokerage firm to manage customer 
 
 4. **Access API Documentation (Swagger):**
     ```url
-    http://localhost:8585/OrderManagement/swagger-ui/index.html
+    http://localhost:8585//Brokage-Firm-Challenge/swagger-ui/index.html
     ```
 
 5. **Access H2 Console (if using H2):**
     ```url
-    http://localhost:8585/OrderManagement/h2-console
+    http://localhost:8585//Brokage-Firm-Challenge/h2-console
     ```
 
 ---
