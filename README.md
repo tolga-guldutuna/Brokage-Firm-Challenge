@@ -1,38 +1,38 @@
 # Brokerage Firm Challenge - Order Management API
 
-This project is a backend API developed for a brokerage firm, allowing employees to manage stock orders for their customers. The system includes features for creating, listing, and deleting stock orders, as well as depositing and withdrawing money for customers. The API is built using **Spring Boot** and **PostgreSQL**, with security enhancements such as **BCrypt** for password storage.
+This project is a backend API developed for a brokerage firm to manage customer stock orders. Employees can create, list, and cancel orders, as well as deposit and withdraw money. The system is built using **Spring Boot** and integrates with **PostgreSQL** or **H2** for database management. **BCrypt** is used for secure password storage.
 
 ---
 
 ## Features
 
-- **Create Order:** Allows employees to create new stock orders for customers (BUY/SELL).
-- **List Orders:** Employees can list stock orders for a customer with filters such as date range.
-- **Cancel Order:** Employees can cancel pending orders. Orders with other statuses cannot be canceled.
-- **Deposit Money:** Deposit money (TRY) for a customer.
-- **Withdraw Money:** Withdraw money (TRY) for a customer using their IBAN.
-- **List Assets:** List all assets of a customer.
+- **Create Order:** Allows employees to create stock orders (BUY/SELL) for customers.
+- **List Orders:** List customer stock orders with filters like date range.
+- **Cancel Order:** Cancel pending orders only.
+- **Deposit Money:** Deposit TRY for a customer.
+- **Withdraw Money:** Withdraw TRY for a customer using IBAN.
+- **List Assets:** List customer assets.
+
+---
 
 ## Installation & Setup
 
 ### Prerequisites:
 - **Java 17**
-- **PostgreSQL**
+- **PostgreSQL** or **H2 Database**
 - **Maven**
 
 ### Steps to Run:
 
 1. **Clone the repository:**
-
     ```bash
     git clone https://github.com/yourusername/brokerage-firm-challenge.git
     cd brokerage-firm-challenge
     ```
 
-2. **Configure PostgreSQL Database:**
+2. **Configure Database (PostgreSQL or H2):**
 
-    Create a PostgreSQL database and configure the `application.yml` file with your PostgreSQL credentials.
-
+   For **PostgreSQL**, update `application.yml` with your PostgreSQL credentials:
     ```yaml
     spring:
       datasource:
@@ -46,21 +46,35 @@ This project is a backend API developed for a brokerage firm, allowing employees
         properties:
           hibernate:
             dialect: org.hibernate.dialect.PostgreSQLDialect
+    ```
+
+   For **H2**, you can use the default configuration:
+    ```yaml
+    spring:
+      datasource:
+        url: jdbc:h2:mem:testdb
+        driver-class-name: org.h2.Driver
+        username: sa
+        password: password
+      jpa:
+        hibernate:
+          ddl-auto: update
         show-sql: true
     ```
 
-3. **Run the project using Maven:**
-
+3. **Run the project:**
     ```bash
     mvn spring-boot:run
     ```
 
-4. **Access the API via Swagger UI:**
-
-    After starting the application, you can access the API documentation and test endpoints at:
-
-    ```
+4. **Access API Documentation (Swagger):**
+    ```url
     http://localhost:8585/OrderManagement/swagger-ui/index.html
+    ```
+
+5. **Access H2 Console (if using H2):**
+    ```url
+    http://localhost:8585/OrderManagement/h2-console
     ```
 
 ---

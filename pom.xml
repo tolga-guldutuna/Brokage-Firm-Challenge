@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.4</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
-	<groupId>com.ordermanagement</groupId>
+	<groupId>com.brokenFirmChallenge</groupId>
 	<artifactId>Brokage-Firm-Challenge</artifactId>
 	<version>v0.0.1</version>
 	<name>Brokage Firm Challenge</name>
@@ -46,7 +46,48 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.6.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.3.232</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>postgres</id>
+			<properties>
+				<db.url>jdbc:postgresql://34.78.64.89:5432/postgres</db.url>
+				<db.username>postgres</db.username>
+				<db.password>bsu?e-uKcbG.Ye</db.password>
+				<db.driver>org.postgresql.Driver</db.driver>
+				<spring.jpa.hibernate.ddl-auto>update</spring.jpa.hibernate.ddl-auto>
+				<spring.jpa.properties.hibernate.dialect>org.hibernate.dialect.PostgreSQLDialect</spring.jpa.properties.hibernate.dialect>
+				<init.sql>always</init.sql>
+			</properties>
+		</profile>
+		<profile>
+			<id>h2</id>
+			<properties>
+				<db.url>jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</db.url>
+				<db.username>sa</db.username>
+				<db.password>password</db.password>
+				<db.driver>org.h2.Driver</db.driver>
+				<spring.jpa.hibernate.ddl-auto>update</spring.jpa.hibernate.ddl-auto>
+				<spring.jpa.properties.hibernate.dialect>org.hibernate.dialect.H2Dialect</spring.jpa.properties.hibernate.dialect>
+				<init.sql>never</init.sql>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<plugins>

@@ -2,22 +2,17 @@ spring:
   application:
     name: Order Management
   datasource:
-    url: jdbc:postgresql://34.78.64.89:5432/postgres
-    username: postgres
-    password: Do$_YRtOv]{z<5L>
-    driver-class-name: org.postgresql.Driver
+    url: @db.url@
+    username: @db.username@
+    password: @db.password@
+    driver-class-name: @db.driver@
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: @spring.jpa.hibernate.ddl-auto@
     properties:
       hibernate:
-        default_schema: public
-        format_sql: false
-        show_sql: false
-        generate_statistics: false
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: true
-
+        dialect: @spring.jpa.properties.hibernate.dialect@
+    show-sql: false
 
 server:
   port: 8585
@@ -25,3 +20,6 @@ server:
     context-path: /OrderManagement
 
 
+sql:
+  init:
+    mode: @init.sql@
