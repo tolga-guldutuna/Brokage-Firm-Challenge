@@ -1,0 +1,2656 @@
+{
+	"info": {
+		"_postman_id": "076f4ca1-74ce-4333-8c54-f220ec78f72b",
+		"name": "Brokage Firm Challenge API",
+		"description": "API documentation for the Brokage Firm Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38848519"
+	},
+	"item": [
+		{
+			"name": "processes",
+			"item": [
+				{
+					"name": "customers",
+					"item": [
+						{
+							"name": "update",
+							"item": [
+								{
+									"name": "Update an existing customer",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/customers/update",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"customers",
+												"update"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/customers/update",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"customers",
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\"\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "change-password",
+							"item": [
+								{
+									"name": "Change customer password",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/processes/customers/change-password?customerUid=<string>&newPassword=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"customers",
+												"change-password"
+											],
+											"query": [
+												{
+													"key": "customerUid",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "newPassword",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/processes/customers/change-password?customerUid=<string>&newPassword=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"customers",
+														"change-password"
+													],
+													"query": [
+														{
+															"key": "customerUid",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "newPassword",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "forgot-password",
+							"item": [
+								{
+									"name": "Forgot password service (send reset link)",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/customers/forgot-password",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"customers",
+												"forgot-password"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "<string>",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/customers/forgot-password",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"customers",
+														"forgot-password"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "create",
+							"item": [
+								{
+									"name": "Create a new customer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/customers/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"customers",
+												"create"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/customers/create",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"customers",
+														"create"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\"\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "Delete a customer by UID",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/customers/delete",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"customers",
+												"delete"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "<string>",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/customers/delete",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"customers",
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "assets",
+					"item": [
+						{
+							"name": "update",
+							"item": [
+								{
+									"name": "Update an existing asset",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"uid\": \"<string>\",\n  \"customerUid\": \"<string>\",\n  \"assetName\": \"<string>\",\n  \"size\": \"<number>\",\n  \"usableSize\": \"<number>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/assets/update",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"assets",
+												"update"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"uid\": \"<string>\",\n  \"customerUid\": \"<string>\",\n  \"assetName\": \"<string>\",\n  \"size\": \"<number>\",\n  \"usableSize\": \"<number>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/assets/update",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"assets",
+														"update"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"customerUid\": \"<string>\",\n    \"assetName\": \"<string>\",\n    \"size\": \"<number>\",\n    \"usableSize\": \"<number>\"\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "list",
+							"item": [
+								{
+									"name": "List all assets for a given customer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/assets/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"assets",
+												"list"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "<string>",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/assets/list",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"assets",
+														"list"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"size\": \"<number>\",\n      \"usableSize\": \"<number>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"size\": \"<number>\",\n      \"usableSize\": \"<number>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "create",
+							"item": [
+								{
+									"name": "Create a new asset for a customer",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"uid\": \"<string>\",\n  \"customerUid\": \"<string>\",\n  \"assetName\": \"<string>\",\n  \"size\": \"<number>\",\n  \"usableSize\": \"<number>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/assets/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"assets",
+												"create"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"uid\": \"<string>\",\n  \"customerUid\": \"<string>\",\n  \"assetName\": \"<string>\",\n  \"size\": \"<number>\",\n  \"usableSize\": \"<number>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/assets/create",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"assets",
+														"create"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"customerUid\": \"<string>\",\n    \"assetName\": \"<string>\",\n    \"size\": \"<number>\",\n    \"usableSize\": \"<number>\"\n  }\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "delete",
+							"item": [
+								{
+									"name": "Delete an asset by UID",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/processes/assets/delete",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"processes",
+												"assets",
+												"delete"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "<string>",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/processes/assets/delete",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"processes",
+														"assets",
+														"delete"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "update",
+					"item": [
+						{
+							"name": "{uid}",
+							"item": [
+								{
+									"name": "Update an existing employee (Admin)",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/update/:uid",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												"update",
+												":uid"
+											],
+											"variable": [
+												{
+													"key": "uid",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/employees/update/:uid",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"employees",
+														"update",
+														":uid"
+													],
+													"variable": [
+														{
+															"key": "uid"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "Admin login for employees",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/login",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\"\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "create",
+					"item": [
+						{
+							"name": "Create a new employee (Admin)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/employees/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/employees/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "all",
+					"item": [
+						{
+							"name": "get All Employees",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/employees/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"employees",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												"all"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"item": [
+						{
+							"name": "{uid}",
+							"item": [
+								{
+									"name": "Delete an existing employee (Admin)",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/employees/delete/:uid",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"employees",
+												"delete",
+												":uid"
+											],
+											"variable": [
+												{
+													"key": "uid",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "*/*"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/employees/delete/:uid",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"employees",
+														"delete",
+														":uid"
+													],
+													"variable": [
+														{
+															"key": "uid"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "*/*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "assets",
+			"item": [
+				{
+					"name": "update-usable-size",
+					"item": [
+						{
+							"name": "Update the usable size of an asset",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assets/update-usable-size?assetUid=<string>&amount=<number>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assets",
+										"update-usable-size"
+									],
+									"query": [
+										{
+											"key": "assetUid",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "amount",
+											"value": "<number>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/assets/update-usable-size?assetUid=<string>&amount=<number>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"assets",
+												"update-usable-size"
+											],
+											"query": [
+												{
+													"key": "assetUid",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "amount",
+													"value": "<number>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "list",
+					"item": [
+						{
+							"name": "List all assets for a given customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<string>",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assets/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assets",
+										"list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/assets/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"assets",
+												"list"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"size\": \"<number>\",\n      \"usableSize\": \"<number>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"size\": \"<number>\",\n      \"usableSize\": \"<number>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get",
+					"item": [
+						{
+							"name": "Get a specific asset by customer UID and asset name",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assets/get?customerUid=<string>&assetName=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assets",
+										"get"
+									],
+									"query": [
+										{
+											"key": "customerUid",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "assetName",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/assets/get?customerUid=<string>&assetName=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"assets",
+												"get"
+											],
+											"query": [
+												{
+													"key": "customerUid",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "assetName",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"customerUid\": \"<string>\",\n    \"assetName\": \"<string>\",\n    \"size\": \"<number>\",\n    \"usableSize\": \"<number>\"\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get-asset",
+					"item": [
+						{
+							"name": "Get an asset by its UID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<string>",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/assets/get-asset",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assets",
+										"get-asset"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/assets/get-asset",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"assets",
+												"get-asset"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"customerUid\": \"<string>\",\n    \"assetName\": \"<string>\",\n    \"size\": \"<number>\",\n    \"usableSize\": \"<number>\"\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "all",
+					"item": [
+						{
+							"name": "get All Assets",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/assets/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"assets",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/assets/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"assets",
+												"all"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"size\": \"<number>\",\n      \"usableSize\": \"<number>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"size\": \"<number>\",\n      \"usableSize\": \"<number>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "match",
+					"item": [
+						{
+							"name": "Match a pending order (Admin Only)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"orderUid\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/match",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"match"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"orderUid\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/orders/match",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"match"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "list",
+					"item": [
+						{
+							"name": "List orders for a customer by date range",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerUid\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"endDate\": \"<dateTime>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/list",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerUid\": \"<string>\",\n  \"startDate\": \"<dateTime>\",\n  \"endDate\": \"<dateTime>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/orders/list",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"list"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"orderSide\": \"BUY\",\n      \"size\": \"<number>\",\n      \"price\": \"<number>\",\n      \"status\": \"CANCELED\",\n      \"createDate\": \"<dateTime>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"orderSide\": \"SELL\",\n      \"size\": \"<number>\",\n      \"price\": \"<number>\",\n      \"status\": \"PENDING\",\n      \"createDate\": \"<dateTime>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "list-by-status",
+					"item": [
+						{
+							"name": "List orders for a customer by status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerUid\": \"<string>\",\n  \"status\": \"MATCHED\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/list-by-status",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"list-by-status"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerUid\": \"<string>\",\n  \"status\": \"MATCHED\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/orders/list-by-status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"list-by-status"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"orderSide\": \"BUY\",\n      \"size\": \"<number>\",\n      \"price\": \"<number>\",\n      \"status\": \"CANCELED\",\n      \"createDate\": \"<dateTime>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"orderSide\": \"SELL\",\n      \"size\": \"<number>\",\n      \"price\": \"<number>\",\n      \"status\": \"PENDING\",\n      \"createDate\": \"<dateTime>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "create",
+					"item": [
+						{
+							"name": "Create a new order for a customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerUid\": \"<string>\",\n  \"assetName\": \"<string>\",\n  \"orderSide\": \"BUY\",\n  \"size\": \"<number>\",\n  \"price\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerUid\": \"<string>\",\n  \"assetName\": \"<string>\",\n  \"orderSide\": \"BUY\",\n  \"size\": \"<number>\",\n  \"price\": \"<number>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/orders/create",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"customerUid\": \"<string>\",\n    \"assetName\": \"<string>\",\n    \"orderSide\": \"SELL\",\n    \"size\": \"<number>\",\n    \"price\": \"<number>\",\n    \"status\": \"CANCELED\",\n    \"createDate\": \"<dateTime>\"\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "cancel",
+					"item": [
+						{
+							"name": "Cancel a pending order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"orderUid\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/cancel",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"cancel"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"orderUid\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/orders/cancel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"cancel"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "all",
+					"item": [
+						{
+							"name": "get All Orders",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/orders/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/orders/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"orders",
+												"all"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"orderSide\": \"BUY\",\n      \"size\": \"<number>\",\n      \"price\": \"<number>\",\n      \"status\": \"CANCELED\",\n      \"createDate\": \"<dateTime>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"customerUid\": \"<string>\",\n      \"assetName\": \"<string>\",\n      \"orderSide\": \"SELL\",\n      \"size\": \"<number>\",\n      \"price\": \"<number>\",\n      \"status\": \"PENDING\",\n      \"createDate\": \"<dateTime>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "withdraw",
+					"item": [
+						{
+							"name": "Withdraw money for a customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerUid\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"iban\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/withdraw",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"withdraw"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerUid\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"iban\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/withdraw",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												"withdraw"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get-by-uid",
+					"item": [
+						{
+							"name": "Get customer by UID",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<string>",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/get-by-uid",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"get-by-uid"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/get-by-uid",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												"get-by-uid"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\"\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "get-by-email",
+					"item": [
+						{
+							"name": "Get customer by email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<string>",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/get-by-email",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"get-by-email"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/get-by-email",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												"get-by-email"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"uid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\"\n  }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "deposit",
+					"item": [
+						{
+							"name": "Deposit money for a customer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerUid\": \"<string>\",\n  \"amount\": \"<double>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/customers/deposit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"deposit"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerUid\": \"<string>\",\n  \"amount\": \"<double>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/customers/deposit",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												"deposit"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "all",
+					"item": [
+						{
+							"name": "get All Customers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/customers/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"customers",
+										"all"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "*/*"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/customers/all",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"customers",
+												"all"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "*/*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"success\": \"<boolean>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"uid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\"\n    },\n    {\n      \"uid\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"password\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8585/Brokage-Firm-Challenge"
+		}
+	]
+}
