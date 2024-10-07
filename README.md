@@ -79,12 +79,12 @@ This project is a backend API developed for a brokerage firm to manage customer 
 
 4. **Access API Documentation (Swagger):**
     ```url
-    http://localhost:8585//Brokage-Firm-Challenge/swagger-ui/index.html
+    http://localhost:8585/Brokage-Firm-Challenge/swagger-ui/index.html
     ```
 
 5. **Access H2 Console (if using H2):**
     ```url
-    http://localhost:8585//Brokage-Firm-Challenge/h2-console
+    http://localhost:8585/Brokage-Firm-Challenge/h2-console
     ```
 
 ---
@@ -106,10 +106,24 @@ Passwords in the system are securely stored using **BCrypt** hashing. Below is a
 ## Database Schema
 
 ### Tables:
-- **Customers:** Stores customer details with hashed passwords.
-- **Assets:** Stores customer assets like TRY.
-- **Orders:** Stores customer stock orders including BUY/SELL transactions.
 
+- **Customers:** 
+  - Stores customer details with hashed passwords using **BCrypt**.
+  - Fields: `id`, `uid`, `name`, `email`, `password`.
+  
+- **Assets:** 
+  - Stores customer assets such as TRY (Turkish Lira).
+  - Fields: `id`, `uid`, `customer_uid`, `asset_name`, `size`, `usable_size`.
+  
+- **Orders:** 
+  - Stores customer stock orders, including BUY/SELL transactions.
+  - Fields: `id`, `uid`, `customer_uid`, `asset_name`, `order_side` (BUY or SELL), `size`, `price`, `status` (PENDING, MATCHED, CANCELED), `create_date`.
+  
+- **Employees:** 
+  - Stores employee details, where employees are admin users with full access to the system.
+  - Fields: `id`, `uid`, `name`, `email`, `password` (hashed with **BCrypt**).
+
+- 
 ### Sample Insert Data:
 
 You can use the following data to populate your database:
