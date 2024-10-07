@@ -44,4 +44,9 @@ public class OrderController {
     public BaseResponse<List<OrderDTO>> listOrdersByCustomerUidAndStatus(@RequestBody ListOrdersByStatusRequest request) {
         return orderService.listOrdersByCustomerUidAndStatus(request.getCustomerUid(), request.getStatus());
     }
+
+    @GetMapping("/all")
+    public BaseResponse<List<OrderDTO>> getAllOrders() {
+        return orderService.getAllOrders();
+    }
 }

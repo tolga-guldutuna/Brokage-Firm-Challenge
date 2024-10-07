@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -63,4 +66,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.delete(existingEmployee);
         return new BaseResponse<>(true, "Employee deleted successfully", null);
     }
+
+    @Override
+    public BaseResponse<List<EmployeeDTO>> getAllEmployees() {
+        List<Employee> employees = employeeRepository.findAll();
+        List<EmployeeDTO> employeeDTOs = employees.stream()
+                .map(EmployeeMapper::toDTO)
+                .collect(Collectors.toList());
+        return new BaseResponse<>(true, "All employees retrieved successfully", employeeDTOs);
+    }
+
+
 }

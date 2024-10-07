@@ -33,9 +33,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/employees/**").hasRole("ADMIN")
-                        .requestMatchers("/customers/**").hasRole("CUSTOMER")
-                        .requestMatchers("/orders/**").hasAnyRole("CUSTOMER", "ADMIN")
+                        .requestMatchers("/**").hasRole("ADMIN")
+                        .requestMatchers("/customers/**","/orders/**").hasRole("CUSTOMER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.defaultSuccessUrl("/home", true))

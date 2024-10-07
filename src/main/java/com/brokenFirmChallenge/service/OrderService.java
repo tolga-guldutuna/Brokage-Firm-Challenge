@@ -19,4 +19,6 @@ public interface OrderService {
     BaseResponse<Void> cancelOrder(String orderUid) throws Exception;
 
     BaseResponse<Void> matchOrder(String orderUid) throws Exception;
+
+    BaseResponse<List<OrderDTO>> getAllOrders();
 }

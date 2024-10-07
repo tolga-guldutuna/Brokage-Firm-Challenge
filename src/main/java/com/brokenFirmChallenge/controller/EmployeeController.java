@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {
@@ -36,5 +38,10 @@ public class EmployeeController {
     @DeleteMapping("/delete/{uid}")
     public BaseResponse<Void> deleteEmployee(@PathVariable String uid) {
         return employeeService.deleteEmployee(uid);
+    }
+
+    @GetMapping("/all")
+    public BaseResponse<List<EmployeeDTO>> getAllEmployees() {
+        return employeeService.getAllEmployees();
     }
 }

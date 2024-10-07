@@ -15,4 +15,6 @@ public interface AssetService {
     BaseResponse<AssetDTO> getAssetByUid(String assetUid);
 
     BaseResponse<Void> updateUsableSize(String assetUid, BigDecimal amount);
+
+    BaseResponse<List<AssetDTO>> getAllAssets();
 }

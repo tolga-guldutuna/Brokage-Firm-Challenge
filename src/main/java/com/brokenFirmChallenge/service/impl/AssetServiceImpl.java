@@ -59,4 +59,14 @@ public class AssetServiceImpl implements AssetService {
         assetRepository.updateUsableSizeNative(assetUid, amount);
         return new BaseResponse<>(true, "Usable size updated successfully.", null);
     }
+
+    @Override
+    public BaseResponse<List<AssetDTO>> getAllAssets() {
+        List<Asset> assets = assetRepository.findAll();
+        List<AssetDTO> assetDTOs = assets.stream()
+                .map(AssetMapper::toDTO)
+                .collect(Collectors.toList());
+        return new BaseResponse<>(true, "All assets retrieved successfully", assetDTOs);
+    }
+
 }

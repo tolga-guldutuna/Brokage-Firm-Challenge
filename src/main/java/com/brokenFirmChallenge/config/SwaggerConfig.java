@@ -23,8 +23,8 @@ public class SwaggerConfig {
     }
 
     @Bean
-    GroupedOpenApi orders() {
-        return GroupedOpenApi.builder().group("orders").pathsToMatch("/orders/**").build();
+    GroupedOpenApi assets() {
+        return GroupedOpenApi.builder().group("assets").pathsToMatch("/assets/**").build();
     }
 
     @Bean
@@ -33,7 +33,9 @@ public class SwaggerConfig {
     }
 
     @Bean
-    GroupedOpenApi assets() {
-        return GroupedOpenApi.builder().group("assets").pathsToMatch("/assets/**").build();
+    GroupedOpenApi orders() {
+        return GroupedOpenApi.builder().group("orders").pathsToMatch("/orders/**").build();
     }
+
+
 }

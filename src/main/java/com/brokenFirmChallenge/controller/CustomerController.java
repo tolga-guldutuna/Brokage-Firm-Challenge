@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -38,5 +40,10 @@ public class CustomerController {
     @PostMapping("/withdraw")
     public BaseResponse<Void> withdrawMoney(@RequestBody WithdrawMoneyRequest request) throws Exception {
         return customerService.withdrawMoney(request.getCustomerUid(), request.getAmount(), request.getIban());
+    }
+
+    @GetMapping("/all")
+    public BaseResponse<List<CustomerDTO>> getAllCustomers() {
+        return customerService.getAllCustomers();
     }
 }

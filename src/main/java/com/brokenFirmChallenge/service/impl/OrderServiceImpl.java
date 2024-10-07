@@ -116,4 +116,14 @@ public class OrderServiceImpl implements OrderService {
 
         return new BaseResponse<>(true, "Order matched successfully.", null);
     }
+
+    @Override
+    public BaseResponse<List<OrderDTO>> getAllOrders() {
+        List<Order> orders = orderRepository.findAll();
+        List<OrderDTO> orderDTOs = orders.stream()
+                .map(OrderMapper::toDTO)
+                .collect(Collectors.toList());
+        return new BaseResponse<>(true, "All orders retrieved successfully", orderDTOs);
+    }
+
 }

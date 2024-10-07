@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -69,4 +70,14 @@ public class CustomerServiceImpl implements CustomerService {
         assetRepository.updateUsableSizeNative(tryAsset.getUid(), tryAsset.getUsableSize().subtract(BigDecimal.valueOf(amount)));
         return new BaseResponse<>(true, "Money withdrawn successfully.", null);
     }
+
+    @Override
+    public BaseResponse<List<CustomerDTO>> getAllCustomers() {
+        List<Customer> customers = customerRepository.findAll();
+        List<CustomerDTO> customerDTOs = customers.stream()
+                .map(CustomerMapper::toDTO)
+                .collect(Collectors.toList());
+        return new BaseResponse<>(true, "All customers retrieved successfully", customerDTOs);
+    }
+
 }

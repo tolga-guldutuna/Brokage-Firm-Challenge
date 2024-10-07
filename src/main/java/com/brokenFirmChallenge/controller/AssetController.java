@@ -44,4 +44,9 @@ public class AssetController {
             @RequestParam BigDecimal amount) {
         return assetService.updateUsableSize(assetUid, amount);
     }
+
+    @GetMapping("/all")
+    public BaseResponse<List<AssetDTO>> getAllAssets() {
+        return assetService.getAllAssets();
+    }
 }

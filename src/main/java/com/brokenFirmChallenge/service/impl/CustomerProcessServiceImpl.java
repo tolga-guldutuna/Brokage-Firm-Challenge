@@ -8,6 +8,7 @@ import com.brokenFirmChallenge.service.CustomerProcessService;
 import com.brokenFirmChallenge.util.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +18,7 @@ public class CustomerProcessServiceImpl implements CustomerProcessService {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public BaseResponse<CustomerDTO> createCustomer(CustomerDTO customerDTO) {
