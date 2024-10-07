@@ -1,5 +1,15 @@
 # Brokerage Firm Challenge - Order Management API
 
+## Login info
+
+### ADMIN
+- **username: admin**
+- **password :admin123**
+
+### CUSTOMER
+- **username: customer**
+- **password :customer123**
+
 This project is a backend API developed for a brokerage firm to manage customer stock orders. Employees can create, list, and cancel orders, as well as deposit and withdraw money. The system is built using **Spring Boot** and integrates with **PostgreSQL** or **H2** for database management. **BCrypt** is used for secure password storage.
 
 ---
